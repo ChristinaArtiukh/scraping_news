@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>TITLE</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<!-- Font -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+
+	<link href="{% static 'common-css/bootstrap.css'%}" rel="stylesheet">
+
+	<link href="{% static 'common-css/ionicons.css'%}" rel="stylesheet">
+
+
+	<link href="{% static 'single-post-1/css/styles.css'%}" rel="stylesheet">
+
+	<link href="{% static 'single-post-1/css/responsive.css'%}" rel="stylesheet">
+
+</head>
+<body >
+
+	<header>
+		<div class="container-fluid position-relative no-side-padding">
+
+			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
+
+			<ul class="main-menu visible-on-click" id="main-menu">
+				<li><a href="{% url 'home' %}">Главная</a></li>
+			</ul><!-- main-menu -->
+
+		</div><!-- conatiner -->
+	</header>
+
+
+	<section class="post-area section">
+		<div class="container">
+			<div class="row">
+				{%for page in page%}
+				<div class="col-lg-10 col-md-12 no-right-padding">
+					<div class="main-post">
+						<div class="blog-post-inner">
+							<h3 class="title">
+								<b>{{page.title}}</b>
+							</h3>
+							{{new_link}}
+							<div class="post-image">
+								<img src="{{page.image}}" alt="Blog Image">
+							</div>
+							<p class="para">{{page.text_content}}</p>
+						</div><!-- blog-post-inner -->
+						<div class="post-footer post-info">
+							<div class="middle-area">
+								<a class="name"><b>{{page.authors}}</b></a>
+								<h6 class="date"> {{page.data}}</h6>
+							</div>
+						</div><!-- post-info -->
+					</div><!-- main-post -->
+				</div><!-- col-lg-8 col-md-12 -->
+	{%endfor%}
+				<div class="col-lg-2 col-md-12 no-left-padding">
+
+
+				</div><!-- col-lg-4 col-md-12 -->
+			</div><!-- row -->
+
+		</div><!-- container -->
+	</section><!-- post-area -->
+
+
+
+
+	<!-- SCIPTS -->
+
+	<script src="{% static 'common-js/jquery-3.1.1.min.js'%}"></script>
+
+	<script src="{% static 'common-js/tether.min.js'%}"></script>
+
+	<script src="{% static 'common-js/bootstrap.js'%}"></script>
+
+	<script src="{% static 'common-js/scripts.js'%}"></script>
+
+</body>
+</html>

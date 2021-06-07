@@ -1,0 +1,89 @@
+{% load static %}
+<style>
+.single-post .post-footer
+{
+	background-color: #edf3f3
+}
+
+ .b1 {
+    background: white; /* Синий цвет фона */
+    outline: none;
+    border: 0;
+    padding: 0;
+   }
+
+</style>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>TITLE</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+
+
+	<!-- Font -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+
+	<link href="{% static 'common-css/bootstrap.css'%}" rel="stylesheet">
+	<link href="{% static 'common-css/ionicons.css'%}" rel="stylesheet">
+	<link href="{% static 'layout-1/css/styles.css'%}" rel="stylesheet">
+	<link href="{% static 'layout-1/css/responsive.css'%}" rel="stylesheet">
+
+</head>
+<body >
+
+
+
+	<section class="blog-area section">
+		<div class="container">
+			<div class="row">
+				{%for page in page%}
+				{%if page.title != 'Without title' and page.link != 'Without link name' and page.name != 'Without name' and page.time != 'Without time'  %}
+				<div class="col-lg-4 col-md-6">
+					<div class="card h-100">
+						<div class="single-post post-style-1">
+							<div class="blog-info">
+								<h4 class="title">
+									<form method="POST">{% csrf_token %}
+										<input type="hidden" name="name" maxlength="150" required="" id="id_name" value="{{page.name}}">
+										<button class="b1">
+											<b>{{page.title}}</b>
+										</button>
+									</form>
+
+								</h4>
+								<ul class="post-footer" background-color>
+
+										{{page.time}}
+
+
+								</ul>
+							</div><!-- blog-info -->
+						</div><!-- single-post -->
+					</div><!-- card -->
+				</div><!-- col-lg-4 col-md-6 -->
+				{%endif%}
+				{%endfor%}
+			</div><!-- row -->
+
+
+		</div><!-- container -->
+	</section><!-- section -->
+
+
+
+
+	<!-- SCIPTS -->
+
+	<script src="common-js/jquery-3.1.1.min.js"></script>
+	<script src="{% static 'common-js/tether.min.js'%}"></script>
+	<script src="{% static 'common-js/bootstrap.js'%}"></script>
+	<script src="{% static 'common-js/scripts.js'%}"></script>
+
+</body>
+</html>
